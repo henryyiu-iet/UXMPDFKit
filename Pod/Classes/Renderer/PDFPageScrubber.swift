@@ -70,7 +70,7 @@ open class PDFPageScrubber: UIToolbar {
         let pageNumberLabel = UILabel(frame: textRect)
         
         pageNumberLabel.autoresizesSubviews = false
-        pageNumberLabel.autoresizingMask = UIView.AutoresizingMask()
+        pageNumberLabel.autoresizingMask = []
         pageNumberLabel.textAlignment = .center
         pageNumberLabel.backgroundColor = UIColor.clear
         pageNumberLabel.textColor = UIColor.darkText

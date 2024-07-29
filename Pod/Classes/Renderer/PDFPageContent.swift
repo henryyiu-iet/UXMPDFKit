@@ -85,7 +85,7 @@ public class PDFPageContent: UIView {
         autoresizesSubviews = false
         isUserInteractionEnabled = true
         contentMode = .redraw
-        autoresizingMask = UIView.AutoresizingMask()
+        autoresizingMask = []
         backgroundColor = UIColor.clear
         
         buildAnnotationLinksList()
@@ -115,7 +115,7 @@ public class PDFPageContent: UIView {
             highlight.autoresizesSubviews = false
             highlight.isUserInteractionEnabled = false
             highlight.contentMode = .redraw
-            highlight.autoresizingMask = UIView.AutoresizingMask()
+            highlight.autoresizingMask = []
             highlight.backgroundColor = color
             
             addSubview(highlight)

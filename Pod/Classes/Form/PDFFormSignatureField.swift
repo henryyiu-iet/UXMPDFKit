@@ -17,11 +17,11 @@ open class PDFFormSignatureField: PDFFormField {
     
     lazy fileprivate var signButton: UIButton = {
         var button = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-        button.setTitle("Tap To Sign", for: UIControl.State())
+        button.setTitle("Tap To Sign", for: UIControl.State.normal)
         button.tintColor = UIColor.black
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
-        button.setTitleColor(UIColor.black, for: UIControl.State())
-        button.addTarget(self, action: #selector(PDFFormSignatureField.addSignature), for: .touchUpInside)
+        button.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(addSignature), for: .touchUpInside)
         button.isUserInteractionEnabled = true
         button.isExclusiveTouch = true
         return button

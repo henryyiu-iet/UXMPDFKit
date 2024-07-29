@@ -40,7 +40,7 @@ open class PDFBarButton: UIBarButtonItem {
         self.block = block
         
         button.addTarget(self, action: #selector(PDFBarButton.tapped), for: .touchUpInside)
-        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: UIControl.State())
+        button.setImage(image?.withRenderingMode(.alwaysTemplate), for: UIControl.State.normal)
     }
     
     open func toggle(_ state: Bool) {

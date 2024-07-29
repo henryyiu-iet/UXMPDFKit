@@ -205,16 +205,16 @@ open class PDFDocument: NSObject, NSCoding {
         return ProcessInfo.processInfo.globallyUniqueString
     }
     
-    public static func documentsPath() -> String {
+    public class func documentsPath() -> String {
         return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     }
     
-    public static func applicationPath() -> String {
+    public class func applicationPath() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         return (paths.first! as NSString).deletingLastPathComponent
     }
     
-    public static func applicationSupportPath() -> String {
+    public class func applicationSupportPath() -> String {
         let fileManager = FileManager()
         let pathURL = try! fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         return pathURL.path

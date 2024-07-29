@@ -17,7 +17,7 @@ internal class PDFPageScrubberTrackControl: UIControl {
         autoresizesSubviews = false
         isUserInteractionEnabled = true
         contentMode = .redraw
-        autoresizingMask = UIView.AutoresizingMask()
+        autoresizingMask = []
         backgroundColor = UIColor.clear
         isExclusiveTouch = true
     }
