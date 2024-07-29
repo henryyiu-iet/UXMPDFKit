@@ -14,10 +14,10 @@ enum PDFTextParserError: Error {
 
 class PDFTextParser {
     
-    var document: PDFDocument
+    var document: UMXPDFDocument
     var pageRef: CGPDFPage?
     
-    init(document: PDFDocument, page: Int) throws {
+    init(document: UMXPDFDocument, page: Int) throws {
         
         self.document = document
         self.pageRef = document.page(at: page)

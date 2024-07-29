@@ -27,7 +27,7 @@ open class PDFPageContentView: UIScrollView, UIScrollViewDelegate {
 
     let bottomKeyboardPadding: CGFloat = 20.0
 
-    init(frame: CGRect, document: PDFDocument, page: Int) {
+    init(frame: CGRect, document: UMXPDFDocument, page: Int) {
         self.page = page
         contentView = PDFPageContent(document: document, page: page)
 

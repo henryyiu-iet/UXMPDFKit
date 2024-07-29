@@ -15,7 +15,7 @@ public protocol PDFAnnotationControllerProtocol {
 open class PDFAnnotationController: UIViewController {
     
     /// Reference to document
-    var document: PDFDocument!
+    var document: UMXPDFDocument!
     
     /// Store containing all annotations for document
     var annotations = PDFAnnotationStore()
@@ -83,7 +83,7 @@ open class PDFAnnotationController: UIViewController {
      
      - Returns: An instance of the PDFAnnotationController
      */
-    public init(document: PDFDocument, delegate: PDFAnnotationControllerProtocol) {
+    public init(document: UMXPDFDocument, delegate: PDFAnnotationControllerProtocol) {
         self.document = document
         self.annotations = document.annotations
         self.annotationDelegate = delegate
@@ -103,7 +103,7 @@ open class PDFAnnotationController: UIViewController {
      
      - Returns: An instance of the PDFAnnotationController
      */
-    public convenience init(document: PDFDocument,
+    public convenience init(document: UMXPDFDocument,
                             delegate: PDFAnnotationControllerProtocol,
                             annotationTypes: [PDFAnnotation.Type]) {
         self.init(document: document, delegate: delegate)

@@ -10,10 +10,10 @@ import UIKit
 
 public class PDFPageContent: UIView {
     
-    private let pdfDocRef: CGPDFDocument
+    private let pdfDocRef: CGUMXPDFDocument
     private let pdfPageRef: CGPDFPage?
     private let pageAngle: Int /// 0, 90, 180, 270
-    private var links: [PDFDocumentLink] = []
+    private var links: [UMXPDFDocumentLink] = []
     private var pageWidth: CGFloat = 0.0
     private var pageHeight: CGFloat = 0.0
     private var pageOffsetX: CGFloat = 0.0
@@ -28,7 +28,7 @@ public class PDFPageContent: UIView {
     }
     
     //MARK: - Init
-    init(pdfDocument: PDFDocument, page: Int, password: String?) {
+    init(pdfDocument: UMXPDFDocument, page: Int, password: String?) {
         pdfDocRef = pdfDocument.documentRef!
         /// Limit the page
         let pages = pdfDocRef.numberOfPages
@@ -91,7 +91,7 @@ public class PDFPageContent: UIView {
         buildAnnotationLinksList()
     }
     
-    convenience init(document: PDFDocument, page: Int) {
+    convenience init(document: UMXPDFDocument, page: Int) {
         self.init(pdfDocument: document, page: page, password: document.password)
     }
     
@@ -122,7 +122,7 @@ public class PDFPageContent: UIView {
         }
     }
     
-    private func linkFromAnnotation(_ annotation: CGPDFDictionaryRef) -> PDFDocumentLink? {
+    private func linkFromAnnotation(_ annotation: CGPDFDictionaryRef) -> UMXPDFDocumentLink? {
         var annotationRectArray: CGPDFArrayRef? = nil
         
         guard CGPDFDictionaryGetArray(annotation, "Rect", &annotationRectArray) else { return nil }
@@ -189,7 +189,7 @@ public class PDFPageContent: UIView {
         
         let rect = CGRect(x: x, y: y, width: w, height: h)
         
-        return PDFDocumentLink(rect: rect, dictionary:annotation)
+        return UMXPDFDocumentLink(rect: rect, dictionary:annotation)
     }
     
     private func buildAnnotationLinksList() {
