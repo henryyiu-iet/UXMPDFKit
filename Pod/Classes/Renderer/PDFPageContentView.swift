@@ -22,14 +22,20 @@ open class PDFPageContentView: UIScrollView, UIScrollViewDelegate {
     open var page: Int
     open var contentDelegate: PDFPageContentViewDelegate?
     open var viewDidZoom: ((CGFloat) -> Void)?
-    open var maxScale: Int = 5.0
+    open var maxScale: Int
     fileprivate var PDFPageContentViewContext = 0
     fileprivate var previousScale: CGFloat = 1.0
 
     let bottomKeyboardPadding: CGFloat = 20.0
 
-    public init(frame: CGRect, document: UXMPDFDocument, page: Int) {
+    public init(
+        frame: CGRect,
+        document: UXMPDFDocument,
+        page: Int,
+        maxScale: Int = 5.0
+    ) {
         self.page = page
+        self.maxScale = maxScale
         contentView = PDFPageContent(document: document, page: page)
 
         containerView = UIView(frame: contentView.bounds)
