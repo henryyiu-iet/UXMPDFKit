@@ -22,7 +22,7 @@ open class PDFPageContentView: UIScrollView, UIScrollViewDelegate {
     open var page: Int
     open var contentDelegate: PDFPageContentViewDelegate?
     open var viewDidZoom: ((CGFloat) -> Void)?
-    open var maxScale: Int
+    open var maxScale: Double
     fileprivate var PDFPageContentViewContext = 0
     fileprivate var previousScale: CGFloat = 1.0
 
@@ -32,7 +32,7 @@ open class PDFPageContentView: UIScrollView, UIScrollViewDelegate {
         frame: CGRect,
         document: UXMPDFDocument,
         page: Int,
-        maxScale: Int = 5.0
+        maxScale: Double = 1.0
     ) {
         self.page = page
         self.maxScale = maxScale
