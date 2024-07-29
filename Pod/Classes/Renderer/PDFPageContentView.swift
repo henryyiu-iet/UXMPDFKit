@@ -22,6 +22,7 @@ open class PDFPageContentView: UIScrollView, UIScrollViewDelegate {
     open var page: Int
     open var contentDelegate: PDFPageContentViewDelegate?
     open var viewDidZoom: ((CGFloat) -> Void)?
+    open var maxScale: Int = 5.0
     fileprivate var PDFPageContentViewContext = 0
     fileprivate var previousScale: CGFloat = 1.0
 
@@ -256,6 +257,6 @@ open class PDFPageContentView: UIScrollView, UIScrollViewDelegate {
         let zoomScale = PDFPageContentView.zoomScaleThatFits(targetRect.size, source: contentView.bounds.size)
 
         minimumZoomScale = zoomScale
-        maximumZoomScale = zoomScale * 16.0
+        maximumZoomScale = zoomScale * maxScale
     }
 }
