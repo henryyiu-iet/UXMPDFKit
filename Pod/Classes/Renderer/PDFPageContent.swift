@@ -10,7 +10,7 @@ import UIKit
 
 public class PDFPageContent: UIView {
     
-    private let pdfDocRef: CGUMXPDFDocument
+    private let pdfDocRef: CGPDFDocument
     private let pdfPageRef: CGPDFPage?
     private let pageAngle: Int /// 0, 90, 180, 270
     private var links: [UMXPDFDocumentLink] = []

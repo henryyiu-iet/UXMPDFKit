@@ -9,7 +9,7 @@
 import Foundation
 
 open class PDFAction {
-    public class func fromPDFDictionary(_ sourceDictionary: CGPDFDictionaryRef, documentReference: CGUMXPDFDocument) -> PDFAction? {
+    public class func fromPDFDictionary(_ sourceDictionary: CGPDFDictionaryRef, documentReference: CGPDFDocument) -> PDFAction? {
         var action: PDFAction?
         var destinationName: CGPDFStringRef? = nil
         var destinationString: UnsafePointer<Int8>? = nil

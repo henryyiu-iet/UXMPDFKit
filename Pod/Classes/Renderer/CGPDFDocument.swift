@@ -1,5 +1,5 @@
 //
-//  CGUMXPDFDocument.swift
+//  CGPDFDocument.swift
 //  Pods
 //
 //  Created by Chris Anderson on 3/5/16.
@@ -8,52 +8,52 @@
 
 import Foundation
 
-public enum CGUMXPDFDocumentError: Error {
+public enum CGPDFDocumentError: Error {
     case fileDoesNotExist
     case passwordRequired
     case couldNotUnlock
     case unableToOpen
 }
 
-extension CGUMXPDFDocument {
+extension CGPDFDocument {
     
-    public static func create(url: URL, password: String?) throws -> CGUMXPDFDocument {
-        guard let docRef = CGUMXPDFDocument((url as CFURL)) else {
-            throw CGUMXPDFDocumentError.fileDoesNotExist
+    public static func create(url: URL, password: String?) throws -> CGPDFDocument {
+        guard let docRef = CGPDFDocument((url as CFURL)) else {
+            throw CGPDFDocumentError.fileDoesNotExist
         }
         
         if docRef.isEncrypted {
-            try CGUMXPDFDocument.unlock(docRef: docRef, password: password)
+            try CGPDFDocument.unlock(docRef: docRef, password: password)
         }
         
         return docRef
     }
     
-    public static func create(data: NSData, password: String?) throws -> CGUMXPDFDocument {
+    public static func create(data: NSData, password: String?) throws -> CGPDFDocument {
         guard let dataProvider = CGDataProvider(data: data),
-            let docRef = CGUMXPDFDocument(dataProvider) else {
-            throw CGUMXPDFDocumentError.fileDoesNotExist
+            let docRef = CGPDFDocument(dataProvider) else {
+            throw CGPDFDocumentError.fileDoesNotExist
         }
         
         if docRef.isEncrypted {
-            try CGUMXPDFDocument.unlock(docRef: docRef, password: password)
+            try CGPDFDocument.unlock(docRef: docRef, password: password)
         }
         
         return docRef
     }
     
-    public static func unlock(docRef: CGUMXPDFDocument, password: String?) throws {
+    public static func unlock(docRef: CGPDFDocument, password: String?) throws {
         if docRef.unlockWithPassword("") == false {
             
             guard let password = password else {
-                throw CGUMXPDFDocumentError.passwordRequired
+                throw CGPDFDocumentError.passwordRequired
             }
             
             docRef.unlockWithPassword((password as NSString).utf8String!)
         }
         
         if docRef.isUnlocked == false {
-            throw CGUMXPDFDocumentError.couldNotUnlock
+            throw CGPDFDocumentError.couldNotUnlock
         }
     }
 }

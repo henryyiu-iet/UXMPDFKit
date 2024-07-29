@@ -10,7 +10,7 @@ import UIKit
 
 open class UMXPDFDocument: NSObject, NSCoding {
     
-    open var documentRef: CGUMXPDFDocument?
+    open var documentRef: CGPDFDocument?
     
     /// Document Properties
     open var password: String?
@@ -104,14 +104,14 @@ open class UMXPDFDocument: NSObject, NSCoding {
     func loadDocument() throws {
         
         if let fileUrl = self.fileUrl {
-            self.documentRef =  try CGUMXPDFDocument.create(url: fileUrl, password: self.password)
+            self.documentRef =  try CGPDFDocument.create(url: fileUrl, password: self.password)
         }
         else if let fileData = self.fileData {
-            self.documentRef =  try CGUMXPDFDocument.create(data: fileData, password: self.password)
+            self.documentRef =  try CGPDFDocument.create(data: fileData, password: self.password)
         }
         
         if documentRef == nil {
-            throw CGUMXPDFDocumentError.unableToOpen
+            throw CGPDFDocumentError.unableToOpen
         }
         
         self.loadDocumentInformation()
@@ -183,7 +183,7 @@ open class UMXPDFDocument: NSObject, NSCoding {
         
         //            let majorVersion = UnsafeMutablePointer<Int32>()
         //            let minorVersion = UnsafeMutablePointer<Int32>()
-        //            CGUMXPDFDocumentGetVersion(pdfDocRef, majorVersion, minorVersion)
+        //            CGPDFDocumentGetVersion(pdfDocRef, majorVersion, minorVersion)
         //            self.version = Float("\(majorVersion).\(minorVersion)")!
         
         self.pageCount = pdfDocRef.numberOfPages
