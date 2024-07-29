@@ -11,11 +11,11 @@ import Foundation
 open class PDFFormViewController: NSObject {
     var formPages: [Int: PDFFormPage] = [:]
     
-    let document: UMXPDFDocument
+    let document: UXMPDFDocument
     let parser: PDFObjectParser
     var lastPage: PDFPageContentView?
     
-    public init(document: UMXPDFDocument) {
+    public init(document: UXMPDFDocument) {
         self.document = document
         
         parser = PDFObjectParser(document: document)

@@ -1,5 +1,5 @@
 //
-//  UMXPDFDocument.swift
+//  UXMPDFDocument.swift
 //  Pods
 //
 //  Created by Chris Anderson on 3/5/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class UMXPDFDocument: NSObject, NSCoding {
+open class UXMPDFDocument: NSObject, NSCoding {
     
     open var documentRef: CGPDFDocument?
     
@@ -37,19 +37,19 @@ open class UMXPDFDocument: NSObject, NSCoding {
     /// Document annotations
     open var annotations: PDFAnnotationStore = PDFAnnotationStore()
     
-    public static func from(filePath: String, password: String? = nil) throws -> UMXPDFDocument? {
-        if let document = try UMXPDFDocument.unarchiveDocument(filePath: filePath, password: password) {
+    public static func from(filePath: String, password: String? = nil) throws -> UXMPDFDocument? {
+        if let document = try UXMPDFDocument.unarchiveDocument(filePath: filePath, password: password) {
             return document
         }
         else {
-            return try UMXPDFDocument(filePath: filePath, password: password)
+            return try UXMPDFDocument(filePath: filePath, password: password)
         }
     }
     
-    static func unarchiveDocument(filePath: String, password: String?) throws -> UMXPDFDocument? {
+    static func unarchiveDocument(filePath: String, password: String?) throws -> UXMPDFDocument? {
         
-        let archiveFilePath = UMXPDFDocument.archiveFilePathForFile(path: filePath)
-        if let document = NSKeyedUnarchiver.unarchiveObject(withFile: archiveFilePath) as? UMXPDFDocument {
+        let archiveFilePath = UXMPDFDocument.archiveFilePathForFile(path: filePath)
+        if let document = NSKeyedUnarchiver.unarchiveObject(withFile: archiveFilePath) as? UXMPDFDocument {
             document.fileUrl = URL(fileURLWithPath: filePath, isDirectory: false)
             document.password = password
             
@@ -76,7 +76,7 @@ open class UMXPDFDocument: NSObject, NSCoding {
     
     public init(filePath: String, password: String? = nil) throws {
         
-        self.guid = UMXPDFDocument.GUID()
+        self.guid = UXMPDFDocument.GUID()
         self.password = password
         self.fileUrl = URL(fileURLWithPath: filePath, isDirectory: false)
         self.lastOpen = Date()
@@ -89,7 +89,7 @@ open class UMXPDFDocument: NSObject, NSCoding {
     }
     
     public init(fileData: NSData, password: String? = nil) throws {
-        self.guid = UMXPDFDocument.GUID()
+        self.guid = UXMPDFDocument.GUID()
         self.password = password
         self.fileData = fileData
         self.lastOpen = NSDate() as Date
@@ -221,14 +221,14 @@ open class UMXPDFDocument: NSObject, NSCoding {
     }
     
     static func archiveFilePathForFile(path: String) -> String {
-        let archivePath = UMXPDFDocument.applicationSupportPath()
+        let archivePath = UXMPDFDocument.applicationSupportPath()
         
         let archiveName = (path as NSString).lastPathComponent + ".plist"
         return (archivePath as NSString).appendingPathComponent(archiveName)
     }
     
     func archiveWithFileAtPath(_ filePath: String) -> Bool {
-        let archiveFilePath = UMXPDFDocument.archiveFilePathForFile(path: filePath)
+        let archiveFilePath = UXMPDFDocument.archiveFilePathForFile(path: filePath)
         return NSKeyedArchiver.archiveRootObject(self, toFile: archiveFilePath)
     }
     

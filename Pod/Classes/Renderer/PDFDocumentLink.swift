@@ -1,5 +1,5 @@
 //
-//  UMXPDFDocumentLink.swift
+//  UXMPDFDocumentLink.swift
 //  Pods
 //
 //  Created by Ricardo Nunez on 11/11/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class UMXPDFDocumentLink {
+internal class UXMPDFDocumentLink {
     let rect: CGRect
     let dictionary: CGPDFDictionaryRef
     

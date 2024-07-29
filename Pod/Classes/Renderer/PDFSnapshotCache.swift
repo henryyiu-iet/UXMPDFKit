@@ -15,12 +15,12 @@ fileprivate enum SnapshotState {
 open class PDFSnapshot {
     fileprivate var state = SnapshotState.new
     var image: UIImage?
-    let document: UMXPDFDocument
+    let document: UXMPDFDocument
     let page: Int
     let guid: String
     let size: CGSize
     
-    init(document: UMXPDFDocument, page: Int, guid: String, size: CGSize) {
+    init(document: UXMPDFDocument, page: Int, guid: String, size: CGSize) {
         self.document = document
         self.page = page
         self.guid = guid
@@ -41,7 +41,7 @@ open class PDFQueue {
     
     static let sharedQueue = PDFQueue()
     
-    func fetchPage(_ document: UMXPDFDocument, page: Int, size: CGSize, completion:((PDFSnapshot) -> Void)?) {
+    func fetchPage(_ document: UXMPDFDocument, page: Int, size: CGSize, completion:((PDFSnapshot) -> Void)?) {
         let guid = "\(document.guid)_\(page)"
         
         let thumbnail = PDFSnapshot(document: document, page: page, guid: guid, size: size)
@@ -65,7 +65,7 @@ open class PDFQueue {
         renderQueue.addOperation(thumbRender)
     }
     
-    public class func fetchPage(_ document: UMXPDFDocument, page: Int, size: CGSize, completion:((PDFSnapshot) -> Void)?) {
+    public class func fetchPage(_ document: UXMPDFDocument, page: Int, size: CGSize, completion:((PDFSnapshot) -> Void)?) {
         self.sharedQueue.fetchPage(document, page: page, size: size, completion:completion)
     }
 }

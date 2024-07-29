@@ -13,10 +13,10 @@ public protocol PDFRenderer {
 }
 
 open class PDFRenderController {
-    let document: UMXPDFDocument
+    let document: UXMPDFDocument
     let renderControllers: [PDFRenderer]
     
-    public init(document: UMXPDFDocument, controllers: [PDFRenderer]) {
+    public init(document: UXMPDFDocument, controllers: [PDFRenderer]) {
         self.document = document
         self.renderControllers = controllers
     }
